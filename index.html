@@ -3,135 +3,1160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Heroes Through Technology</title>
+    <title>Creative Kids World - Imagination & Creativity</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f9f7ff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 154, 158, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5f2eea;
+            text-shadow: 2px 2px 0 #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5f2eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav a:hover {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        nav a.active {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #5f2eea;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 #fff;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #333;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 107, 107, 0.5);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.6;
+        }
+
+        .shape-1 {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background-color: #ffde59;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            top: 20%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            background-color: #ff9a9e;
+            border-radius: 10px;
+            transform: rotate(45deg);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .shape-3 {
+            bottom: 15%;
+            left: 20%;
+            width: 70px;
+            height: 70px;
+            background-color: #a1c4fd;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 9s ease-in-out infinite;
+        }
+
+        .shape-4 {
+            bottom: 20%;
+            right: 10%;
+            width: 90px;
+            height: 45px;
+            background-color: #4facfe;
+            border-radius: 50px;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Activities Section */
+        .activities {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #5f2eea;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+            border-radius: 10px;
+        }
+
+        .activity-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 200px;
+            background-color: #fad0c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card-image svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            color: #5f2eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-button {
+            background-color: #5f2eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card-button:hover {
+            background-color: #4a1dc2;
+        }
+
+        /* Learning Paths Section */
+        .learning-paths {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+
+        .learning-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .learning-intro p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .path-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .path-tab {
+            padding: 0.8rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #5f2eea;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .path-tab.active {
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #5f2eea;
+        }
+
+        .path-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .path-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .path-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .path-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .path-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .path-icon svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .path-info h3 {
+            font-size: 2rem;
+            color: #5f2eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .path-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .requirements {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f9f7ff;
+            border-radius: 15px;
+        }
+
+        .requirements h4 {
+            font-size: 1.3rem;
+            color: #5f2eea;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .requirements li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .requirements li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+        }
+
+        .sample-projects {
+            margin-top: 2rem;
+        }
+
+        .sample-projects h4 {
+            font-size: 1.3rem;
+            color: #5f2eea;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: #f9f7ff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 150px;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .project-image svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-details {
+            padding: 1.2rem;
+        }
+
+        .project-details h5 {
+            font-size: 1.1rem;
+            color: #5f2eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-details p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .difficulty {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 0.8rem;
+        }
+
+        .difficulty span {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .difficulty-level {
+            display: flex;
+            gap: 3px;
+        }
+
+        .difficulty-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .difficulty-dot.filled {
+            background-color: #ff6b6b;
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .color-mixer {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .color-mixer h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .color-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .color-control label {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .color-control input {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .color-preview {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 10px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item:hover svg {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 50%);
+        }
+
+        .gallery-item-title {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+            background-color: white;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5f2eea;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #ff9a9e;
+            border-radius: 5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #ff9a9e;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: #ff4757;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .activity-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .color-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .path-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: #ffeb99; text-align: center;">
-    <header style="background: #ff66b2; color: white; padding: 20px;">
-        <h1>🎉 Health Heroes Through Technology 🎉</h1>
-        <p>Revolutionizing Healthcare with Innovation</p>
-        <nav>
-            <a href="#about">About</a> |
-            <a href="#heroes">Health Heroes</a> |
-            <a href="#gallery">Gallery</a> |
-            <a href="#services">Medical Services</a> |
-            <a href="#involved">Get Involved</a> |
-            <a href="#contact">Contact</a>
-        </nav>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 5C11.7157 5 5 11.7157 5 20C5 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5 20 5Z" fill="#FFD166"/>
+                        <path d="M15 15C15 13.3431 13.6569 12 12 12C10.3431 12 9 13.3431 9 15C9 16.6569 10.3431 18 12 18C13.6569 18 15 16.6569 15 15Z" fill="#EF476F"/>
+                        <path d="M31 15C31 13.3431 29.6569 12 28 12C26.3431 12 25 13.3431 25 15C25 16.6569 26.3431 18 28 18C29.6569 18 31 16.6569 31 15Z" fill="#EF476F"/>
+                        <path d="M20 28C23.3137 28 26 25.3137 26 22H14C14 25.3137 16.6863 28 20 28Z" fill="#EF476F"/>
+                        <path d="M12 22C13.1046 22 14 21.1046 14 20C14 18.8954 13.1046 18 12 18C10.8954 18 10 18.8954 10 20C10 21.1046 10.8954 22 12 22Z" fill="#06D6A0"/>
+                        <path d="M28 22C29.1046 22 30 21.1046 30 20C30 18.8954 29.1046 18 28 18C26.8954 18 26 18.8954 26 20C26 21.1046 26.8954 22 28 22Z" fill="#06D6A0"/>
+                    </svg>
+                </div>
+                <div class="logo-text">Creative Kids World</div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#home" class="nav-link active">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 22V12H15V22" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#activities" class="nav-link">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Activities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#learning-paths" class="nav-link">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12L12 17L22 12" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Learning
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gallery" class="nav-link">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.5 10C9.32843 10 10 9.32843 10 8.5C10 7.67157 9.32843 7 8.5 7C7.67157 7 7 7.67157 7 8.5C7 9.32843 7.67157 10 8.5 10Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21 15L16 10L5 21" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="nav-link">
+                            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    
-    <marquee behavior="scroll" direction="left" style="background: #ffcc00; padding: 10px; font-size: 18px;">Transforming healthcare through technology! 🚀</marquee>
-    
-    <main>
-        <section id="about">
-            <h2>🌟 About Health Transformation 🌟</h2>
-            <p>Technology is transforming healthcare, making medical services more efficient, accessible, and innovative.</p>
-            <ul>
-                <li>🩺 AI in Healthcare</li>
-                <li>🤖 Robotics & Surgery</li>
-                <li>⌚ Smart Wearables</li>
-                <li>📞 Telemedicine</li>
-                <li>📊 Health Apps & Data Analytics</li>
-            </ul>
-        </section>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Unleash Your Imagination!</h1>
+            <p>Welcome to Creative Kids World, where imagination knows no bounds! Explore fun activities, games, and creative challenges designed to spark your creativity.</p>
+            <button class="cta-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Start Creating Now!
+            </button>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities" id="activities">
+        <h2 class="section-title">Fun Creative Activities</h2>
+        <div class="activity-cards">
+            <div class="activity-card">
+                <div class="card-image">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="200" fill="#FFD6E0"/>
+                        <circle cx="200" cy="100" r="60" fill="#FFACC7"/>
+                        <circle cx="180" cy="80" r="10" fill="white"/>
+                        <circle cx="220" cy="80" r="10" fill="white"/>
+                        <path d="M180 120 Q200 140 220 120" stroke="#FF4081" stroke-width="5" fill="none"/>
+                        <path d="M140 40 Q160 20 180 40" stroke="#FF4081" stroke-width="3" fill="none"/>
+                        <path d="M220 40 Q240 20 260 40" stroke="#FF4081" stroke-width="3" fill="none"/>
+                        <circle cx="100" cy="50" r="20" fill="#FFC107"/>
+                        <circle cx="300" cy="50" r="20" fill="#FFC107"/>
+                        <rect x="80" y="150" width="40" height="30" fill="#4CAF50"/>
+                        <rect x="280" y="150" width="40" height="30" fill="#4CAF50"/>
+                        <path d="M150 150 Q200 180 250 150" stroke="#4CAF50" stroke-width="5" fill="none"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Drawing & Painting</h3>
+                    <p>Explore colors, shapes, and textures through fun drawing and painting activities that will bring your imagination to life!</p>
+                    <button class="card-button">Explore</button>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="card-image">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="200" fill="#E3F2FD"/>
+                        <rect x="120" y="40" width="160" height="120" fill="#BBDEFB" rx="10" ry="10"/>
+                        <rect x="140" y="60" width="120" height="80" fill="white" rx="5" ry="5"/>
+                        <circle cx="150" cy="70" r="5" fill="#F44336"/>
+                        <circle cx="170" cy="70" r="5" fill="#FFC107"/>
+                        <circle cx="190" cy="70" r="5" fill="#4CAF50"/>
+                        <rect x="150" y="90" width="100" height="10" fill="#EEEEEE" rx="2" ry="2"/>
+                        <rect x="150" y="110" width="80" height="10" fill="#EEEEEE" rx="2" ry="2"/>
+                        <rect x="150" y="130" width="60" height="10" fill="#EEEEEE" rx="2" ry="2"/>
+                        <circle cx="80" cy="60" r="20" fill="#FF9800"/>
+                        <circle cx="320" cy="60" r="20" fill="#FF9800"/>
+                        <path d="M60 140 Q80 120 100 140 Q120 160 140 140" stroke="#2196F3" stroke-width="3" fill="none"/>
+                        <path d="M260 140 Q280 120 300 140 Q320 160 340 140" stroke="#2196F3" stroke-width="3" fill="none"/>
+                        <path d="M60 160 Q200 200 340 160" stroke="#673AB7" stroke-width="5" fill="none"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Crafts & DIY</h3>
+                    <p>Turn everyday materials into amazing creations! Learn how to make toys, decorations, and gifts with simple supplies.</p>
+                    <button class="card-button">Explore</button>
+                </div>
+            </div>
+            <div class="activity-card">
+                <div class="card-image">
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="400" height="200" fill="#F3E5F5"/>
+                        <path d="M100 50 L150 50 L170 30 L190 70 L210 50 L230 90 L250 70 L300 70" stroke="#9C27B0" stroke-width="3" fill="none"/>
+                        <rect x="80" y="100" width="240" height="80" fill="#CE93D8" rx="10" ry="10"/>
+                        <rect x="100" y="120" width="200" height="40" fill="white" rx="5" ry="5"/>
+                        <circle cx="120" cy="140" r="10" fill="#E1BEE7"/>
+                        <circle cx="150" cy="140" r="10" fill="#E1BEE7"/>
+                        <circle cx="180" cy="140" r="10" fill="#E1BEE7"/>
+                        <circle cx="210" cy="140" r="10" fill="#E1BEE7"/>
+                        <circle cx="240" cy="140" r="10" fill="#E1BEE7"/>
+                        <circle cx="270" cy="140" r="10" fill="#E1BEE7"/>
+                        <path d="M50 30 Q100 10 150 30" stroke="#9C27B0" stroke-width="3" fill="none"/>
+                        <path d="M250 30 Q300 10 350 30" stroke="#9C27B0" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3>Storytelling</h3>
+                    <p>Create your own magical worlds and characters! Learn the art of storytelling and bring your imagination to life.</p>
+                    <button class="card-button">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths Section -->
+    <section class="learning-paths" id="learning-paths">
+        <h2 class="section-title">Creative Learning Paths</h2>
         
-        <hr>
+        <div class="learning-intro">
+            <p>At Creative Kids World, we believe that creativity and imagination are essential skills for the future. Our learning paths are designed to help children explore technology in fun, engaging ways that develop critical thinking, problem-solving, and creative expression.</p>
+        </div>
         
-        <section id="heroes">
-            <h2>💪 Meet the Health Heroes 💪</h2>
-            <p>Discover inspiring individuals using technology to save lives!</p>
-            <article>
-                <h3>Dr. Jane Doe - AI Surgeon</h3>
-                <img src="ai_surgeon.jpg" alt="Dr. Jane Doe" width="200">
-                <p>Dr. Doe has pioneered AI-assisted robotic surgery, making procedures safer and more precise.</p>
-            </article>
-            <article>
-                <h3>John Smith - Telemedicine Advocate</h3>
-                <img src="telemedicine_advocate.jpg" alt="John Smith" width="200">
-                <p>John has developed a telemedicine platform providing healthcare access to remote areas.</p>
-            </article>
-        </section>
+        <div class="path-tabs">
+            <div class="path-tab active" data-path="web">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12H22" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Web Development
+            </div>
+            <div class="path-tab" data-path="scratch">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V7.5L14.5 2Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M14 2V8H20" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 18V12" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 15L12 18L15 15" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Scratch Programming
+            </div>
+            <div class="path-tab" data-path="robotics">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="11" width="18" height="10" rx="2" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="7.5" cy="16.5" r="1.5" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="16.5" cy="16.5" r="1.5" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 11V7C8 5.89543 8.89543 5 10 5H14C15.1046 5 16 5.89543 16 7V11" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Robotics
+            </div>
+        </div>
         
-        <hr>
-        
-        <section id="gallery">
-            <h2>📸 Media Gallery 📸</h2>
-            <p>Explore images and videos showcasing health tech innovations.</p>
-            <figure>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRticNFnxAiE1jiPRvEqZRy_gi3Ny-6jkVb3g&s" alt="AI Surgery" width="300">
-                <figcaption>AI-assisted robotic surgery in action</figcaption>
-            </figure>
-            <figure>
-                <img src="telemedicine.jpg" alt="Telemedicine" width="300">
-                <figcaption>Telemedicine connecting doctors and patients</figcaption>
-            </figure>
-            <figure>
-                <img src="wearable_device.jpg" alt="Wearable Health Device" width="300">
-                <figcaption>Smart wearable health monitoring device</figcaption>
-            </figure>
-            <video width="320" height="240" controls>
-                <source src="health_tech.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </section>
-        
-        <hr>
-        
-        <section id="services">
-            <h2>🏥 Medical Services 🏥</h2>
-            <p>Access essential healthcare services:</p>
-            <ul>
-                <li><a href="https://www.onlineclinic.com" target="_blank">Book an Online Consultation</a></li>
-                <li><a href="https://www.findhospital.com" target="_blank">Find a Nearby Hospital</a></li>
-                <li><a href="tel:+1234567890">Emergency Helpline: +123-456-7890</a></li>
-            </ul>
-        </section>
-        
-        <hr>
-        
-        <section id="involved">
-            <h2>🙋 Get Involved 🙋</h2>
-            <form>
-                <fieldset>
-                    <legend>Join the Healthcare Revolution</legend>
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" required>
-                    <br><br>
-                    
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" required>
-                    <br><br>
-                    
-                    <label for="interest">Your Area of Interest:</label>
-                    <select id="interest">
-                        <option>AI in Healthcare</option>
-                        <option>Robotics</option>
-                        <option>Wearables</option>
-                    </select>
-                    <br><br>
-                    
-                    <label for="message">Your Message:</label>
-                    <textarea id="message" rows="4" cols="30"></textarea>
-                    <br><br>
-                    
-                    <button type="submit">Submit 🚀</button>
-                </fieldset>
-            </form>
-        </section>
-        
-        <hr>
-        
-        <section id="contact">
-            <h2>📞 Contact Us 📞</h2>
-            <p>Have questions? Reach out to us!</p>
-            <address>
-                Email: <a href="mailto:info@healthheroes.com">info@healthheroes.com</a><br>
-                Phone: +123-456-7890
-            </address>
-        </section>
-    </main>
-    
-    <footer style="background: #ff66b2; color: white; padding: 15px;">
-        <p>&copy; 2025 Health Heroes | Follow us on social media 🌍</p>
-    </footer>
-</body>
-</html>
+        <!-- Web Development Content -->
+        <div class="path-content active" id="web-content">
+            <div class="path-header">
+                <div class="path-icon">
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M25 5C13.9543 5 5 13.9543 5 25C5 36.0457 13.9543 45 25 45C36.0457 45 45 36.0457 45 25C45 13.9543 36.0457 5 25 5Z" fill="#E3F2FD"/>
+                        <path d="M5 25H45" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M25 5C30.5228 10.5228 33.5228 17.6619 33.5 25C33.5228 32.3381 30.5228 39.4772 25 45C19.4772 39.4772 16.4772 32.3381 16.5 25C16.4772 17.6619 19.4772 10.5228 25 5Z" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 15L20 20" stroke="#FF5722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 20L35 15" stroke="#FF5722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 35L20 30" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 30L35 35" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="path-info">
+                    <h3>Web Development</h3>
+                    <p>Web development is the art of creating websites and web applications. It's a fantastic way for children to express their creativity while learning valuable technical skills. Through web development, kids can build their own digital spaces, share their ideas with the world, and learn the fundamentals of coding.</p>
+                </div>
+            </div>
+            
+            <div class="requirements">
+                <h4>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11L12 14L22 4" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    What You'll Need
+                </h4>
+                <ul>
+                    <li>A computer with internet access</li>
+                    <li>A text editor (like Notepad, Visual Studio Code, or online editors like Replit)</li>
+                    <li>A web browser (Chrome, Firefox, Edge, or Safari)</li>
+                    <li>Basic reading and typing skills</li>
+                    <li>Curiosity and creativity!</li>
+                </ul>
+            </div>
+            
+            <div class="sample-projects">
+                <h4>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19.4 15C19.2669 15.3016 19.2272 15.6362 19.286 15.9606C19.3448 16.285 19.4995 16.5843 19.73 16.82L19.79 16.88C19.976 17.0657 20.1235 17.2863 20.2241 17.5291C20.3248 17.7719 20.3766 18.0322 20.3766 18.295C20.3766 18.5578 20.3248 18.8181 20.2241 19.0609C20.1235 19.3037 19.976 19.5243 19.79 19.71C19.6043 19.896 19.3837 20.0435 19.1409 20.1441C18.8981 20.2448 18.6378 20.2966 18.375 20.2966C18.1122 20.2966 17.8519 20.2448 17.6091 20.1441C17.3663 20.0435 17.1457 19.896 16.96 19.71L16.9 19.65C16.6643 19.4195 16.365 19.2648 16.0406 19.206C15.7162 19.1472 15.3816 19.1869 15.08 19.32C14.7842 19.4468 14.532 19.6572 14.3543 19.9255C14.1766 20.1938 14.0813 20.5082 14.08 20.83V21C14.08 21.5304 13.8693 22.0391 13.4942 22.4142C13.1191 22.7893 12.6104 23 12.08 23C11.5496 23 11.0409 22.7893 10.6658 22.4142C10.2907 22.0391 10.08 21.5304 10.08 21V20.91C10.0723 20.579 9.96512 20.258 9.77251 19.9887C9.5799 19.7194 9.31074 19.5143 9 19.4C8.69838 19.2669 8.36381 19.2272 8.03941 19.286C7.71502 19.3448 7.41568 19.4995 7.18 19.73L7.12 19.79C6.93425 19.976 6.71368 20.1235 6.47088 20.2241C6.22808 20.3248 5.96783 20.3766 5.705 20.3766C5.44217 20.3766 5.18192 20.3248 4.93912 20.2241C4.69632 20.1235 4.47575 19.976 4.29 19.79C4.10405 19.6043 3.95653 19.3837 3.85588 19.1409C3.75523 18.8981 3.70343 18.6378 3.70343 18.375C3.70343 18.1122 3.75523 17.8519 3.85588 17.6091C3.95653 17.3663 4.10405 17.1457 4.29 16.96L4.35 16.9C4.58054 16.6643 4.73519 16.365 4.794 16.0406C4.85282 15.7162 4.81312 15.3816 4.68 15.08C4.55324 14.7842 4.34276 14.532 4.07447 14.3543C3.80618 14.1766 3.49179 14.0813 3.17 14.08H3C2.46957 14.08 1.96086 13.8693 1.58579 13.4942C1.21071 13.1191 1 12.6104 1 12.08C1 11.5496 1.21071 11.0409 1.58579 10.6658C1.96086 10.2907 2.46957 10.08 3 10.08H3.09C3.42099 10.0723 3.742 9.96512 4.0113 9.77251C4.28059 9.5799 4.48572 9.31074 4.6 9C4.73312 8.69838 4.77282 8.36381 4.714 8.03941C4.65519 7.71502 4.50054 7.41568 4.27 7.18L4.21 7.12C4.02405 6.93425 3.87653 6.71368 3.77588 6.47088C3.67523 6.22808 3.62343 5.96783 3.62343 5.705C3.62343 5.44217 3.67523 5.18192 3.77588 4.93912C3.87653 4.69632 4.02405 4.47575 4.21 4.29C4.39575 4.10405 4.61632 3.95653 4.85912 3.85588C5.10192 3.75523 5.36217 3.70343 5.625 3.70343C5.88783 3.70343 6.14808 3.75523 6.39088 3.85588C6.63368 3.95653 6.85425 4.10405 7.04 4.29L7.1 4.35C7.33568 4.58054 7.63502 4.73519 7.95941 4.794C8.28381 4.85282 8.61838 4.81312 8.92 4.68H9C9.29577 4.55324 9.54802 4.34276 9.72569 4.07447C9.90337 3.80618 9.99872 3.49179 10 3.17V3C10 2.46957 10.2107 1.96086 10.5858 1.58579C10.9609 1.21071 11.4696 1 12 1C12.5304 1 13.0391 1.21071 13.4142 1.58579C13.7893 1.96086 14 2.46957 14 3V3.09C14.0013 3.41179 14.0966 3.72618 14.2743 3.99447C14.452 4.26276 14.7042 4.47324 15 4.6C15.3016 4.73312 15.6362 4.77282 15.9606 4.714C16.285 4.65519 16.5843 4.50054 16.82 4.27L16.88 4.21C17.0657 4.02405 17.2863 3.87653 17.5291 3.77588C17.7719 3.67523 18.0322 3.62343 18.295 3.62343C18.5578 3.62343 18.8181 3.67523 19.0609 3.77588C19.3037 3.87653 19.5243 4.02405 19.71 4.21C19.896 4.39575 20.0435 4.61632 20.1441 4.85912C20.2448 5.10192 20.2966 5.36217 20.2966 5.625C20.2966 5.88783 20.2448 6.14808 20.1441 6.39088C20.0435 6.63368 19.896 6.85425 19.71 7.04L19.65 7.1C19.4195 7.33568 19.2648 7.63502 19.206 7.95941C19.1472 8.28381 19.1869 8.61838 19.32 8.92V9C19.4468 9.29577 19.6572 9.54802 19.9255 9.72569C20.1938 9.90337 20.5082 9.99872 20.83 10H21C21.5304 10 22.0391 10.2107 22.4142 10.5858C22.7893 10.9609 23 11.4696 23 12C23 12.5304 22.7893 13.0391 22.4142 13.4142C22.0391 13.7893 21.5304 14 21 14H20.91C20.5882 14.0013 20.2738 14.0966 20.0055 14.2743C19.7372 14.452 19.5268 14.7042 19.4 15Z" stroke="#5f2eea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Sample Projects
+                </h4>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="250" height="150" fill="#E3F2FD"/>
+                                <rect x="20" y="20" width="210" height="30" fill="#BBDEFB" rx="5" ry="5"/>
+                                <rect x="30" y="30" width="100" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="140" y="30" width="30" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="180" y="30" width="30" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="20" y="60" width="100" height="70" fill="#BBDEFB" rx="5" ry="5"/>
+                                <rect x="130" y="60" width="100" height="70" fill="#BBDEFB" rx="5" ry="5"/>
+                                <rect x="30" y="70" width="80" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="30" y="90" width="60" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="30" y="110" width="70" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="140" y="70" width="80" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="140" y="90" width="60" height="10" fill="#2196F3" rx="2" ry="2"/>
+                                <rect x="140" y="110" width="70" height="10" fill="#2196F3" rx="2" ry="2"/>
+                            </svg>
+                        </div>
+                        <div class="project-details">
+                            <h5>Personal Portfolio</h5>
+                            <p>Create a simple webpage to showcase your favorite things, hobbies, and artwork.</p>
+                            <div class="difficulty">
+                                <span>Difficulty:</span>
+                                <div class="difficulty-level">
+                                    <div class="difficulty-dot filled"></div>
+                                    <div class="difficulty-dot"></div>
+                                    <div class="difficulty-dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <svg viewBox="0 0 250 150" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="250" height="150" fill="#E8F5E9"/>
+                                <rect x="50" y="20" width="150" height="110" fill="#C8E6C9" rx="10" ry="10"/>
+                                <rect x="60" y="30" width="130" height="20" fill="#4CAF50" rx="5" ry="5"/>
+                                <rect x="60" y="60" width="130" height="60" fill="white" rx="5" ry="5"/>
+                                <rect x="70" y="70" width="110" height="10" fill="#E0E0E0" rx="2" ry="2"/>
+                                <rect x="70" y="90" width="110" height="10" fill="#E0E0E0" rx="2" ry="2"/>
+                                <rect x="70" y="110" width="50" height="10" fill="#4CAF50" rx="5" ry="5"/>
+                            </svg>
+                        </div>
+                        <div class="project-details">
+                            <h5>Interactive Quiz</h5>
+                            <p>Build a fun quiz about your favorite topic with questions and answers.</p>
+                            <div class="difficulty">
+                                <span>Difficulty:</span>
+                                <div class="difficulty-level">
+                                    <div class="difficulty-dot filled"></div>
+                                    <div class="difficulty-dot filled"></div>
